@@ -52,4 +52,4 @@ jobs:
           ci-name: CI
           ci-inputs: >-
             image=${{ secrets.USERNAME }}/flask-demo
-            sha-tag=latest
+            sha-tag=1.1
