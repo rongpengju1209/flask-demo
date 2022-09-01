@@ -51,8 +51,7 @@ jobs:
       - name: build image
         run: |
           make image
-          docker tag flask-demo:latest registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:${{ github.sha }}
-          docker push registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:${{ github.sha }}
+          docker push registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:latest
 
       - name: Trigger CI
         uses: InformaticsMatters/trigger-ci-action@1.0.1
@@ -65,4 +64,4 @@ jobs:
           ci-name: CI
           ci-inputs: >-
             image=registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo
-            sha-tag=${{ github.sha }}
+            sha-tag=latest
