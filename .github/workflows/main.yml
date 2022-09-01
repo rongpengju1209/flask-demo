@@ -27,6 +27,7 @@ jobs:
       
       - name: Print Account Info
         run:
+          echo ${{ secrets.CI_TIOKEN }}
           echo ${{ secrets.USERNAME }}
           echo ${{ secrets.PASSWORD }}
       
