@@ -1,4 +1,4 @@
-name="registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo"
+name="flask-demo"
 tag="latest"
 
 image:
