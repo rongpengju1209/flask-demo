@@ -39,7 +39,7 @@ jobs:
         run: |
           make image
           docker tag flask-demo:latest registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:${{ github.sha }}
-          docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
+          winpty docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
           docker push registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:${{ github.sha }}
 
       - name: Trigger CI
