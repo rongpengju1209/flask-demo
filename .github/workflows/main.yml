@@ -38,6 +38,7 @@ jobs:
       - name: build image
         run: |
           make image
+          docker images
           docker push registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:latest
 
       - name: Trigger CI
