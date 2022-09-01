@@ -25,13 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-#       - name: Docker Login
-#         uses: aliyun/acr-login@v1
-#         with:
-#           login-server: https://registry.cn-hangzhou.aliyuncs.com
-#           region-id: cn-hangzhou
-#           username: ${{ secrets.USERNAME }}
-#           password: ${{ secrets.PASSWORD }}
+      - name: Docker Login
+        uses: aliyun/acr-login@v1
+        with:
+          login-server: https://registry.cn-hangzhou.aliyuncs.com
+          region-id: cn-hangzhou
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
 #           logout: true
 
       # Runs a set of commands using the runners shell
@@ -39,7 +39,6 @@ jobs:
         run: |
           make image
           docker tag flask-demo:latest registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:${{ github.sha }}
-          docker login --username=thinker_coder --password=rpj201209 registry.cn-hangzhou.aliyuncs.com
           docker push registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:${{ github.sha }}
 
       - name: Trigger CI
