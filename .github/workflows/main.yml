@@ -30,7 +30,7 @@ jobs:
         uses: docker/setup-buildx-action@v1
       
       # 登录到阿里云容器镜像服务
-      - name: Login to Ali Docker
+      - name: Login to Aliyun Docker
         uses: aliyun/acr-login@v1
         # 配置登录信息，secrets 变量在 github settings -> secrets 中设置
         with:
