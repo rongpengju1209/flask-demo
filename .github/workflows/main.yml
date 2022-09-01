@@ -34,7 +34,7 @@ jobs:
         uses: aliyun/acr-login@v1
         # 配置登录信息，secrets 变量在 github settings -> secrets 中设置
         with:
-          login-server: https://registry.cn-hangzhou.aliyuncs.com
+          login-server: registry.cn-hangzhou.aliyuncs.com
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASS_WORD }}
       
