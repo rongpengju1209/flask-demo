@@ -25,31 +25,29 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      # 登录到阿里云容器镜像服务
-      - name: Login to Aliyun Docker
-        uses: aliyun/acr-login@v1
-        # 配置登录信息，secrets 变量在 github settings -> secrets 中设置
+      - name: Docker Login
+        uses: docker/login-action@v1.10.0
         with:
-          login-server: registry.cn-hangzhou.aliyuncs.com
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASS_WORD }}
+          logout: true
 
       # Runs a set of commands using the runners shell
       - name: build image
         run: |
           make image
-          docker images
-          docker push registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo:latest
+          docker tag flask-demo:latest ${{ secrets.USERNAME }}/flask-demo:${{ github.sha }}
+          docker push ${{ secrets.USERNAME }}/flask-demo:${{ github.sha }}
 
       - name: Trigger CI
         uses: InformaticsMatters/trigger-ci-action@1.0.1
         with:
-          ci-owner: rongpengju1209
+          ci-owner: pyfs
           ci-repository: flask-demo-kustomize
           ci-ref: refs/heads/master
-          ci-user: rongpengju1209
+          ci-user: pyfs
           ci-user-token: ${{ secrets.CI_TOKEN }}
           ci-name: CI
           ci-inputs: >-
-            image=registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo
-            sha-tag=latest
+            image=${{ secrets.USER_NAME }}/flask-demo
+            sha-tag=${{ github.sha }}
