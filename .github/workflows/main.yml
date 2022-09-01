@@ -38,8 +38,8 @@ jobs:
       - name: build image
         run: |
           make image
-          docker tag flask-demo:latest ${{ secrets.USERNAME }}/flask-demo:1.1
-          docker push ${{ secrets.USERNAME }}/flask-demo:1.1
+          docker tag flask_demo:latest ${{ secrets.USERNAME }}/flask_demo:1.1
+          docker push ${{ secrets.USERNAME }}/flask_demo:1.1
 
       - name: Trigger CI
         uses: InformaticsMatters/trigger-ci-action@1.0.1
