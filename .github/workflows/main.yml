@@ -35,16 +35,16 @@ jobs:
         # 配置登录信息，secrets 变量在 github settings -> secrets 中设置
         with:
           registry: https://registry.cn-hangzhou.aliyuncs.com
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.PASS_WORD }}
       
 #       - name: Docker Login
 #         uses: aliyun/acr-login@v1
 #         with:
 #           login-server: 
 #           region-id: cn-hangzhou
-#           username: ${{ secrets.USERNAME }}
-#           password: ${{ secrets.PASSWORD }}
+#           username: ${{ secrets.USER_NAME }}
+#           password: ${{ secrets.PASS_WORD }}
 # #           logout: true
 
       # Runs a set of commands using the runners shell
