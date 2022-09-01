@@ -38,8 +38,8 @@ jobs:
       - name: build image
         run: |
           make image
-          docker tag flask-demo:latest ${{ secrets.USERNAME }}/kubernetes-study/argo:1.1
-          docker push ${{ secrets.USERNAME }}/kubernetes-study/argo:1.1
+          docker tag flask-demo:latest ${{ secrets.USERNAME }}/argo:1.1
+          docker push ${{ secrets.USERNAME }}/argo:1.1
 
       - name: Trigger CI
         uses: InformaticsMatters/trigger-ci-action@1.0.1
@@ -51,5 +51,5 @@ jobs:
           ci-user-token: ${{ secrets.CI_TOKEN }}
           ci-name: CI
           ci-inputs: >-
-            image=registry.cn-hangzhou.aliyuncs.com/kubernetes-study/argo
+            image=${{ secrets.USERNAME }}/argo
             sha-tag=1.1
